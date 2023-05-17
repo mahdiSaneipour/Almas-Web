@@ -1,0 +1,106 @@
+﻿@page
+@model Al.Web.Pages.Product.SearchModel
+@{
+    List<ProductBoxViewModel> products = Model.Search.Products as List<ProductBoxViewModel>;
+    List<ProductGroup> groups = Model.Search.AllGroups as List<ProductGroup>;
+    List<int> selected = ViewData["Selected"] as List<int>;
+}
+
+<link rel="stylesheet" href="~/css/search.css"/>
+
+<section class="search">
+    <div class="container">
+        <div id="search">
+            <form id="send-from" method="get">
+                <div class="filter-box">
+                    <input asp-for="Search.PageId" value="Model.Search.PageId" id="page-id" type="number" hidden />
+                    <div class="filter-price">
+                        <p>از</p>
+                        <input asp-for="Search.MinimumPrice" type="number"/>
+                        <p>تا</p>
+                        <input asp-for="Search.MaximumPrice" type="number"/>
+                    </div>
+                    <div class="order-by">
+                        <div class="order-by-box">
+                            <input asp-for="Search.OrderBy" value="Newest" type="radio" id="newest" checked />
+                            <label for="newest">جدید ترین</label>
+                        </div>
+                        <div class="order-by-box">
+                            <input asp-for="Search.OrderBy" value="Cheapest" type="radio" id="cheapest" />
+                            <label for="cheapest">ارزان ترین</label>
+                        </div>
+                        <div class="order-by-box">
+                            <input asp-for="Search.OrderBy" value="Expensive" type="radio" id="expensive" />
+                            <label for="expensive">گران ترین</label>
+                        </div>
+                    </div>
+                    <div class="select-groups">
+                        @foreach(var group in groups.Where(g => g.ParentId == null))
+                        {
+                            <div class="groups">
+                                <div class="main-group">
+                                    <input name="groups" @((selected.Any(s => s == group.GroupId)?"checked":"")) type="checkbox" id="group" value="@group.GroupId">
+                                    <span>@group.GroupName</span>
+                                </div>
+                                @if(groups.Any(g => g.GroupId == group.GroupId)) {
+                                    <div class="sub-groups">
+                                        @foreach(var subGroup in groups.Where(g => g.ParentId == group.GroupId))
+                                        {
+                                            <div class="sub-group">
+                                                <input name="groups" @((selected.Any(s => s == subGroup.GroupId) ? "checked" : "")) type="checkbox" id="group" value="@subGroup.GroupId">
+                                                <span>@subGroup.GroupName</span>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="search-button">
+                        <button>جستجو</button>
+                    </div>
+                </div>
+                <div class="search-results">
+                    <div class="search-box">
+                        <div class="search-div">
+                            <input type="text" asp-for="Search.Search" placeholder="دنبال چی میگردی ؟" />
+                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+                    <div class="results">
+
+                        @foreach (var product in products)
+                        {
+                            <div class="product-box">
+                                <a asp-page="ShowProduct" asp-route-productId="@product.ProductId">
+                                    <div class="product-img">
+                                        <img src="~/images/products/thumb/@product.ProductImage" alt="">
+                                    </div>
+                                    <h2>@product.ProductName</h2>
+                                    @if (product.OldPrice != 0)
+                                    {
+                                        <div class="old-price">
+                                            <p>@product.OldPrice.ToString("#,0") تومان</p>
+                                        </div>
+                                    }
+                                    <p>@product.NewPrice.ToString("#,0") تومان</p>
+                                    <a asp-page="ShowProduct" asp-route-productId="@product.ProductId" class="button">مشاهده</a>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <div class="paging">
+                        @for (var i = 1; i<= Model.Search.PageCount; i++)
+                        {
+                            <a onclick="ClickOnPage(@i)" class="@((Model.Search.PageId == i) ? "active" : "")" href="#">@i</a>
+                        }
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/paging.js"></script>
+}

@@ -1,0 +1,66 @@
+﻿@page "{userId}"
+@model Al.Web.Pages.Admin.Users.ShowUserModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "نمایش کاربر";
+}
+
+<link rel="stylesheet" href="~/css/basket.css"/>
+<link rel="stylesheet" href="~/css/admin/admin-users.css"/>
+
+<div class="fields-box user-info">
+    <div class="field-box">
+        <div class="field-title">
+            <p>ایمیل :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.User.Email</p>
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="field-title">
+            <p>نام :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.User.Name</p>
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="field-title">
+            <p>نام کاربری :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.User.Username</p>
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="field-title">
+            <p>شماره تلفن :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.User.Number</p>
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="field-title">
+            <p>آدرس :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.User.Address</p>
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="field-title">
+            <p>تایید ایمیل :</p>
+        </div>
+        <div class="field-content">
+            @if(Model.User.IsConfirm)
+            {
+                <i class="green fa-solid fa-check"></i>
+            } else
+            {
+                <i class="red fa-solid fa-xmark"></i>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+﻿
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل ادمین - @ViewData["Title"]</title>
+</head>
+
+<link rel="stylesheet" href="~/css/basic.css" />
+<link rel="stylesheet" href="~/css/admin/admin.css" />
+<link rel="stylesheet" href="~/fontawesome-free-6.2.1-web/css/all.min.css">
+
+<body>
+    <main>
+        <section class="menu-border">
+            <div class="admin-box">
+                <a href="~/Admin">پنل ادمین</a>
+                <i class="fa-solid fa-bars admin-menu"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Orders">سفارشات</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Users">کاربران</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Products">محصولات</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Groups">گروه ها</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/SubGroups">زیر گروه ها</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Factories">کارخانه ها</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Countries">کشور ها</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Colors">رنگ ها</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Years">سال ها</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Discounts">تخفیف ها</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Banners">بنر ها</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="menu-box">
+                <a href="~/Admin/Slides">اسلاید ها</a>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+        </section>
+        <section class="main">
+            <header>
+                <div class="closed-menu">
+                    <i class="fa-solid fa-bars admin-menu"></i>
+                </div>
+                <nav>
+                    <div class="title">
+                        <p>صفحه ادمین فروشگاه الماس</p>
+                    </div>
+                    <div class="profile">
+                        <a href="#">حسین</a>
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </nav>
+            </header>
+            <section class="content">
+                <div class="box-contents">
+                    @RenderBody()
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
+
+<script src="~/js/jquery-3.6.4.min.js"></script>
+<script src="~/js/admin/admin.js"></script>
+
+@RenderSection("scripts", false)

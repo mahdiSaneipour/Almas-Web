@@ -1,0 +1,63 @@
+@font-face {
+    font-family: Vazir;
+    src: url(../../fonts/vazir.eot) format('eot'), url(../../fonts/vazir.ttf) format('truetype'), url(../../fonts/vazir.woff) format('woff'), url(../../fonts/vazir.woff2) format('woff2')
+}
+
+.ui-menu .ui-menu-item-wrapper {
+    font-family: Vazir;
+}
+
+body, input, button, textarea {
+    font-family: Vazir;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+}
+
+h1, h2, h3, h4, h5, h6, p, div, a, main {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    border: none;
+}
+
+button {
+    border: none;
+}
+
+input {
+    outline: none;
+    resize: none;
+    border: none;
+    background: none;
+}
+
+textarea {
+    background: none;
+    border: none;
+    resize: none;
+    outline: none;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    height: 100%;
+}
+
+.disable {
+    display: none;
+}

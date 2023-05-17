@@ -1,0 +1,193 @@
+:root {
+    --background-color: #111111;
+    --main-color: #FFD700;
+    --light-color: #ebe6e6;
+    --green-color: #06a506;
+    --red-color: #ff0000;
+    --orange-color: #ff9900;
+}
+
+body main header {
+    height: 60px;
+}
+
+.profile {
+    margin-top: 70px;
+    padding-bottom: 50px;
+}
+
+.profile #profile {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile #profile .profile-list {
+    width: 25%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.profile #profile .profile-list ul {
+    flex: 0 1 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.profile #profile .profile-list ul li:first-child {
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+}
+
+.profile #profile .profile-list ul li:last-child {
+    border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -ms-border-radius: 0 0 5px 5px;
+    -o-border-radius: 0 0 5px 5px;
+}
+
+.profile #profile .profile-list ul li {
+    border-bottom: 1px #000 solid;
+}
+
+.profile #profile .profile-list ul li a {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    padding-right: 10px;
+    color: #000;
+    font-size: 16px;
+    text-align: center;
+    background-color: #fff;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.profile #profile .profile-list ul li.exit {
+    background-color: var(--red-color);
+}
+
+.profile #profile .profile-list ul li.exit a {
+    background-color: var(--red-color);
+    color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.profile #profile .profile-list ul li.active {
+    background-color: var(--light-color);
+}
+
+.profile #profile .profile-list ul li.active a {
+    background-color: var(--light-color);
+}
+
+.profile #profile .profile-list ul li a:hover {
+    transform: translateX(30px);
+    -webkit-transform: translateX(30px);
+    -moz-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    -o-transform: translateX(30px);
+}
+
+.profile #profile .info {
+    width: 65%;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.profile #profile .info .info-field {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: #000 solid 1px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.profile #profile .info .info-field p {
+    margin-right: 15px;
+}
+
+.profile #profile .info .edit-button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.profile #profile .info .edit-button a,
+.profile #profile .info .edit-button button {
+    display: block;
+    width: 200px;
+    text-align: center;
+    border-radius: 5px;
+    line-height: 40px;
+    font-size: 16px;
+    background-color: var(--green-color);
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+    .profile #profile .info .edit-button.password button {
+        background-color: var(--green-color);
+    }
+
+    .profile #profile .info .desc-product span {
+        color: var(--red-color);
+        font-size: 15px;
+    }
+
+
+/* start edit profile */
+
+.profile #profile .info .info-field input {
+    width: 100%;
+    font-size: 15px;
+}
+
+.profile #profile .info .edit-button a {
+    background-color: var(--orange-color);
+    width: 180px;
+    height: 35px;
+    line-height: 35px;
+}
+
+/* end edit profile */

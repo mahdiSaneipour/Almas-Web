@@ -1,0 +1,63 @@
+﻿@page
+@model Al.Web.Pages.Admin.Factories.IndexModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "کشور ها";
+}
+
+<link rel="stylesheet" href="~/css/admin/custom-select.css">
+<link rel="stylesheet" href="~/css/basket.css" />
+<link rel="stylesheet" href="~/css/admin/admin-groups.css" />
+
+
+<div class="add-button">
+    <a asp-page="AddCountry">افزودن کشور</a>
+    <i class="fa-solid fa-plus"></i>
+</div>
+<div class="table">
+    <div class="head-table">
+        <div class="head-title">
+            <p>کشور ها</p>
+        </div>
+    </div>
+</div>
+<div class="basket-table">
+    <div class="head-column">
+        <div class="number-div">
+            <p>#</p>
+        </div>
+        <div class="name-div">
+            <p>نام کشور</p>
+        </div>
+        <div class="delete-div">
+            <p>عملیات</p>
+        </div>
+    </div>
+    @for (var i = 1; i <= Model.Model.Countries.Count(); i++)
+    {
+        <div class="normal-column @((i % 2 == 0) ? "even" : "")">
+            <div class="number-div">
+                <p>@i</p>
+            </div>
+            <div class="name-div">
+                <a>@Model.Model.Countries[i-1].CountryName</a>
+            </div>
+            <div class="delete-div">
+                <a asp-page-handler="DeleteCountry" asp-route-countryId="@Model.Model.Countries[i-1].CountryId">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+                <a asp-page="EditCountry" asp-route-countryId="@Model.Model.Countries[i-1].CountryId">
+                    <i class="fa-solid fa-pen-to-square orange"></i>
+                </a>
+            </div>
+        </div>
+    }
+</div>
+<div class="admin-paging">
+    <div class="paging-box">
+        @for (var i = 1; i <= Model.Model.TotalPage; i++)
+        {
+            <a asp-page="Index" asp-route-pageId="@i" class="@((i == @Model.Model.PageId) ? "active" : "")">@i</a>
+        }
+    </div>
+</div>

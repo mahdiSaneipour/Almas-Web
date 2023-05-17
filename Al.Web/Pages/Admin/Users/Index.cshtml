@@ -1,0 +1,109 @@
+﻿@page
+@model Al.Web.Pages.Admin.Users.IndexModel
+@{
+    ViewData["Title"] = "کاربران";
+    Layout = "_AdminLayout";
+    var filter = ViewData["Filter"];
+    var search = ViewData["Search"];
+    var pageId = ViewData["PageId"];
+}
+
+<link rel="stylesheet" href="~/css/admin/custom-select.css">
+<link rel="stylesheet" href="~/css/basket.css"/>
+<link rel="stylesheet" href="~/css/admin/admin-users.css"/>
+
+<div class="table">
+    <form id="form" action="">
+        <div class="head-table">
+            <div class="filter">
+                <div class="custom-select" style="width:200px;">
+                    <input id="selected-value" value="@filter" hidden />
+                    <input id="page-id" name="pageId" value="@pageId" hidden />
+
+                    <select class="select" name="filter">
+                        <option value="All">همه</option>
+                        <option value="ConfirmedEmail">ایمیل تایید شده</option>
+                        <option value="NotConfirmedEmail">هنوز ایمیل تایید نشده</option>
+                    </select>
+                </div>
+                <div class="search">
+                    <input type="text" value="@search" name="search" placeholder="جستجو در ایمیل و نام کاربری">
+                    <button>جستجو</button>
+                </div>
+            </div>
+            <div class="head-title">
+                <p>کاربران</p>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="basket-table">
+    <div class="head-column">
+        <div class="number-div">
+            <p>#</p>
+        </div>
+        <div class="name-div">
+            <p>ایمیل</p>
+        </div>
+        <div class="price-div">
+            <p>نام کاربری</p>
+        </div>
+        <div class="count-div">
+            <p>نام</p>
+        </div>
+        <div class="sum-div">
+            <p>تایید ایمیل</p>
+        </div>
+        <div class="delete-div">
+            <p>عملیات</p>
+        </div>
+    </div>
+
+    @for (var i = 1; i <= Model.Users.Users.Count; i++)
+    {
+        <div class="normal-column @((i % 2 == 0) ? "even" : "" )">
+            <div class="number-div">
+                <p>@i</p>
+            </div>
+            <div class="name-div">
+                <a asp-page="ShowUser" asp-route-userId="@Model.Users.Users[i-1].UserId">@Model.Users.Users[@i-1].Email</a>
+            </div>
+            <div class="price-div">
+                <p>@Model.Users.Users[@i-1].Username</p>
+            </div>
+            <div class="count-div">
+                <p>@Model.Users.Users[@i-1].Name</p>
+            </div>
+            <div class="sum-div">
+                @if(Model.Users.Users[i-1].IsConfirm)
+                {
+                    <i class="green fa-solid fa-check"></i>
+                } else
+                {
+                    <i class="red fa-solid fa-xmark"></i>
+                }
+            </div>
+            <div class="delete-div">
+                <a asp-page-handler="DeleteUser" asp-route-userId="@Model.Users.Users[@i-1].UserId">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+                <a asp-page="EditUser" asp-route-userId="@Model.Users.Users[@i-1].UserId">
+                    <i class="fa-solid fa-pen-to-square orange"></i>
+                </a>
+            </div>
+        </div>
+    }
+</div>
+<div class="admin-paging">
+    <div class="paging-box">
+        @for(var i = 1; i <= Model.Users.TotalPage; i++)
+        {
+            <a onclick="ClickPage(@i)" class=@((Model.Users.PageId == i) ? "active" : "")>@i</a>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/js/admin/custom-select.js"></script>
+    <script src="~/js/admin/table-filter.js"></script>
+}

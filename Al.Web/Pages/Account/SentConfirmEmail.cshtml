@@ -1,0 +1,21 @@
+﻿@page "{email}"
+@model Al.Web.Pages.Account.SentConfirmEmailModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/sent-email.css"/>
+
+<main>
+    <section class="forgot-password-email">
+        <div class="container">
+            <div id="forgot-password-email">
+                <div class="send-email-box">
+                    <div class="email-message">
+                        <p>ایمیل درخواستی به این آدرس ارسال شد</p>
+                        <p class="email">@Model.Email</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

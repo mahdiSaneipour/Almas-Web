@@ -1,0 +1,43 @@
+:root {
+    --background: #01215c;
+    --menu-color: #feba01;
+    --navbar-color: #c7ccd4;
+    --nav-text-color: #383030;
+    --background-contents: #eff0f1;
+    --background-info-box: #068006;
+    --info-box-description: #e2dada;
+    --background-search: #c9c8c8;
+    --head-table: #dad8d8;
+    --head-table-color: #1b1a1a;
+    --cross-close-red: #e20f0f;
+    --check-green: #068006;
+    --edit-orange: #ffbb00;
+    --add-green: #11c900;
+    --select-gray: #7a7584;
+}
+
+.confirm-email-box {
+    display: flex;
+}
+
+.confirm-email-box input {
+    margin-right: 10px;
+}
+
+.confirm-email-box label {
+    color: var(--select-gray);
+    font-size: 15px;
+}
+
+.field-box input.field {
+    width: 100%;
+    color: var(--head-table-color);
+}
+
+.box-contents .others-info {
+    margin: auto;
+}
+
+.product-box form {
+    width: 100%;
+}

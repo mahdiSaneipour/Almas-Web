@@ -1,0 +1,85 @@
+﻿@page
+@model Al.Web.Pages.Admin.SubGroups.IndexModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "زیر گروه ها";
+    int parentId = (int) ViewData["ParentId"];
+    SelectList Groups = ViewData["LGroups"] as SelectList;
+}
+
+<link rel="stylesheet" href="~/css/admin/custom-select.css">
+<link rel="stylesheet" href="~/css/basket.css" />
+<link rel="stylesheet" href="~/css/admin/admin-groups.css" />
+
+@if(parentId != 0)
+{
+    <div class="add-button">
+        <a asp-page="AddSubGroup" asp-route-parentId="@parentId">افزودن زیر گروه</a>
+        <i class="fa-solid fa-plus"></i>
+    </div>
+}
+
+<div class="table">
+    <form id="form" method="get">
+        <div class="head-table">
+            <div class="filter">
+                <div class="custom-select" style="width:200px;">
+                    <input id="selected-value" value="@parentId" hidden />
+                    <input id="page-id" name="pageId" value="@Model.Groups.PageId" hidden />
+
+                    <select asp-items="Groups" class="select" name="parentId">
+                    </select>
+                </div>
+            </div>
+            <div class="head-title">
+                <p>زیر گروه ها</p>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div class="basket-table">
+    <div class="head-column">
+        <div class="number-div">
+            <p>#</p>
+        </div>
+        <div class="name-div">
+            <p>نام زیر گروه</p>
+        </div>
+        <div class="delete-div">
+            <p>عملیات</p>
+        </div>
+    </div>
+    @for (var i = 1; i <= Model.Groups.Groups.Count(); i++)
+    {
+        <div class="normal-column @((i % 2 == 0) ? "even" : "")">
+            <div class="number-div">
+                <p>@i</p>
+            </div>
+            <div class="name-div">
+                <a asp-page="../Products/Search/" asp-route-groups="@Model.Groups.Groups[i-1].GroupId">@Model.Groups.Groups[i-1].GroupName</a>
+            </div>
+            <div class="delete-div">
+                <a asp-page-handler="DeleteGroup" asp-route-groupId="@Model.Groups.Groups[i-1].GroupId">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+                <a asp-page="EditSubGroup" asp-route-groupId="@Model.Groups.Groups[i-1].GroupId">
+                    <i class="fa-solid fa-pen-to-square orange"></i>
+                </a>
+            </div>
+        </div>
+    }
+</div>
+<div class="admin-paging">
+    <div class="paging-box">
+        @for (var i = 1; i <= Model.Groups.TotalPage; i++)
+        {
+            <a asp-page="Index" asp-route-pageId="@i" class="@((i == @Model.Groups.PageId) ? "active" : "")">@i</a>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/admin/custom-select.js"></script>
+    <script src="~/js/admin/table-filter.js"></script>
+}

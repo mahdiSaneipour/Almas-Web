@@ -1,0 +1,45 @@
+﻿@page "{userId}"
+@model Al.Web.Pages.Admin.Users.EditUserModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "ویرایش کاربر";
+}
+
+<link rel="stylesheet" href="~/css/basket.css" />
+<link rel="stylesheet" href="~/css/admin/admin-users.css" />
+
+<form method="post">
+    <div class="fields-box user-info">
+        <input asp-for="User.UserId" hidden>
+
+        <div class="field-box">
+            <input type="text" placeholder="ایمیل را وارد کنید" asp-for="User.Email">
+            <span asp-validation-for="User.Email"></span>
+        </div>
+        <div class="field-box">
+            <input type="text" placeholder="نام را وارد کنید" asp-for="User.Name">
+            <span asp-validation-for="User.Name"></span>
+        </div>
+        <div class="field-box">
+            <input type="text" placeholder="نام کاربری را وارد کنید" asp-for="User.Username">
+            <span asp-validation-for="User.Username"></span>
+        </div>
+        <div class="field-box">
+            <input type="text" placeholder="شماره تلفن را وارد کنید" asp-for="User.Number">
+            <span asp-validation-for="User.Number"></span>
+        </div>
+        <div class="field-box">
+            <input type="text" placeholder="آدرس را وارد کنید" asp-for="User.Address">
+            <span asp-validation-for="User.Address"></span>
+        </div>
+        <div class="field-box">
+            <div class="confirm-email-box">
+                <label for="email-c">تایید ایمیل</label>
+                <input asp-for="User.IsConfirm" id="email-c" type="checkbox">
+            </div>
+        </div>
+        <div class="button-box">
+            <button>ثبت</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,55 @@
+﻿@page
+@model SingupModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/sing-up.css" />
+
+<section class="sing-up">
+    <div id="sing-up">
+        <p class="title">ثبت نام در سایت</p>
+        <form method="post" autocomplete="off">
+            <div class="input-box">
+                <input asp-for="User.Email" type="email" placeholder="ایمیل خود را وارد کنید">
+                <span asp-validation-for="User.Email"></span>
+            </div>
+            <div class="input-box">
+                <input asp-for="User.Username" type="text" placeholder="نام کاربری خود را وارد کنید (فقط انگلیسی)">
+                <span asp-validation-for="User.Username"></span>
+            </div>
+            <div class="input-box">
+                <input asp-for="User.Number" type="tel" placeholder="شماره تلفن خود را وارد کنید (اختیاری)">
+                <span asp-validation-for="User.Number"></span>
+
+            </div>
+            <div class="input-box">
+                <input asp-for="User.Name" type="text" placeholder="نام و نام خانودگی خود را وارد کنید">
+                <span asp-validation-for="User.Name"></span>
+
+            </div>
+            <div class="input-box">
+                <input asp-for="User.Password" type="password" placeholder="رمز عبور خود را وارد کنید">
+                <span asp-validation-for="User.Password"></span>
+
+            </div>
+            <div class="input-box">
+                <input asp-for="User.ConfirmPassword" type="password" placeholder="تکرار رمز عبور خود را وارد کنید">
+                <span asp-validation-for="User.ConfirmPassword"></span>
+
+            </div>
+            <div class="button-box">
+                <button>ثبت نام</button>
+            </div>
+            <div class="login">
+                <a asp-page="Login">قبلا ثبت نام کرده اید؟ ورود</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

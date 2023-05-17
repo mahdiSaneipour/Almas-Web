@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - فروشگاه الماس گناباد</title>
+</head>
+
+<link rel="stylesheet" href="~/css/basic.css"/>
+<link rel="stylesheet" href="~/css/main.css"/>
+<link rel="stylesheet" href="~/css/responsive.css" />
+<link rel="stylesheet" href="~/fontawesome-free-6.2.1-web/css/all.min.css" />
+
+@inject IBasketService _basketService
+
+<body>
+    <main>
+        <header>
+            <nav>
+                <div class="container">
+                    <section class="header">
+
+                        @await Component.InvokeAsync("GroupsComponent")
+
+                        <div class="left-side">
+                            <div class="info-box">
+                                @if(User.Identity.IsAuthenticated)
+                                {
+                                    <div class="registered">
+                                        <p>سلام <a asp-page="Profile/Index">مهدی</a> !</p>
+                                    </div>
+                                } else
+                                {
+                                    <div class="not-registered">
+                                        <a asp-page="Account/Login">ورود</a>
+                                        /
+                                        <a asp-page="Account/Singup">ثبت نام</a>
+                                    </div>
+                                }
+                            </div>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="basket-box">
+                                    <a href="~/profile/basket">
+                                        <i class="fa-solid fa-basket-shopping"></i>
+                                        <span>@_basketService.CountOfBasket()</span>
+                                    </a>
+                                </div>
+                            }
+
+                        </div>
+                    </section>
+                </div>
+            </nav>
+        </header>
+
+        @RenderBody()
+
+    </main>
+    <div class="back-menu">
+    </div>
+
+    <script src="~/js/jquery-3.6.4.min.js"></script>
+    <script src="~/js/responsive-menu.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

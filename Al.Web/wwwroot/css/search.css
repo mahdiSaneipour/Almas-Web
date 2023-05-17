@@ -1,0 +1,281 @@
+:root {
+    --background-color: #111111;
+    --main-color: #FFD700;
+    --light-color: #ebe6e6;
+    --green-color: #09df09;
+    --red-color: #ff0000;
+    --second-light-color: #ece4e4;
+    --orange-color: #FFA500;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body main header {
+    height: 60px;
+}
+
+.search {
+    padding: 50px 0;
+}
+
+    .search #search form {
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .search #search form .filter-box {
+            width: 20%;
+            height: fit-content;
+            padding: 10px 10px;
+            border: var(--main-color) 1px solid;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+        }
+
+            .search #search form .filter-box .filter-price {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+                .search #search form .filter-box .filter-price p {
+                    color: var(--light-color);
+                }
+
+                .search #search form .filter-box .filter-price input {
+                    width: 90px;
+                    background-color: #fff;
+                    font-weight: bold;
+                    padding-right: 5px;
+                    box-sizing: border-box;
+                    border-radius: 3px;
+                    -webkit-border-radius: 3px;
+                    -moz-border-radius: 3px;
+                    -ms-border-radius: 3px;
+                    -o-border-radius: 3px;
+                }
+
+            .search #search form .filter-box .order-by {
+                margin-top: 10px;
+                border-bottom: #706b6b solid 1px;
+            }
+
+                .search #search form .filter-box .order-by .order-by-box {
+                    margin-bottom: 5px;
+                }
+
+                    .search #search form .filter-box .order-by .order-by-box label {
+                        color: var(--second-light-color);
+                        font-size: 15px;
+                    }
+
+            .search #search form .filter-box .select-groups {
+                margin-top: 10px;
+            }
+
+                .search #search form .filter-box .select-groups .groups {
+                    margin-bottom: 5px;
+                }
+
+                    .search #search form .filter-box .select-groups .groups .main-group span {
+                        font-weight: bold;
+                        font-size: 15px;
+                        color: var(--second-light-color);
+                    }
+
+                    .search #search form .filter-box .select-groups .groups .sub-group {
+                        margin-right: 20px;
+                    }
+
+                        .search #search form .filter-box .select-groups .groups .sub-group span {
+                            color: var(--second-light-color);
+                        }
+
+            .search #search form .filter-box .search-button {
+                width: 100%;
+                text-align: center;
+                margin-top: 15px;
+            }
+
+                .search #search form .filter-box .search-button button {
+                    width: 100px;
+                    height: 35px;
+                    border-radius: 5px;
+                    font-size: 15px;
+                    cursor: pointer;
+                    color: var(--main-color);
+                    background-color: var(--background-color);
+                    border: var(--main-color) solid 1px;
+                    transition: all .3s ease-in-out;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    -ms-border-radius: 5px;
+                    -o-border-radius: 5px;
+                    -webkit-transition: all .3s ease-in-out;
+                    -moz-transition: all .3s ease-in-out;
+                    -ms-transition: all .3s ease-in-out;
+                    -o-transition: all .3s ease-in-out;
+                }
+
+                    .search #search form .filter-box .search-button button:hover {
+                        background-color: var(--main-color);
+                        color: var(--background-color);
+                    }
+
+        .search #search form .search-results {
+            width: 75%;
+        }
+
+            .search #search form .search-results .search-box {
+                width: 100%;
+                text-align: center;
+            }
+
+                .search #search form .search-results .search-box .search-div {
+                    width: 80%;
+                    height: 40px;
+                    margin: auto;
+                    display: flex;
+                    justify-content: flex-start;
+                }
+
+                    .search #search form .search-results .search-box .search-div input {
+                        width: 80%;
+                        background-color: var(--light-color);
+                        padding-right: 10px;
+                        border-radius: 0 5px 5px 0;
+                        -webkit-border-radius: 0 5px 5px 0;
+                        -moz-border-radius: 0 5px 5px 0;
+                        -ms-border-radius: 0 5px 5px 0;
+                        -o-border-radius: 0 5px 5px 0;
+                    }
+
+                    .search #search form .search-results .search-box .search-div button {
+                        width: 20%;
+                        font-size: 15px;
+                        cursor: pointer;
+                        background-color: var(--main-color);
+                        border-radius: 5px 0 0 5px;
+                        -webkit-border-radius: 5px 0 0 5px;
+                        -moz-border-radius: 5px 0 0 5px;
+                        -ms-border-radius: 5px 0 0 5px;
+                        -o-border-radius: 5px 0 0 5px;
+                    }
+
+                .search #search form .search-results .search-box .results {
+                    margin-top: 30px;
+                }
+
+            .search #search form .search-results .results {
+                width: 100%;
+                margin-top: 30px;
+                justify-content: right;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+                .search #search form .search-results .results .product-box {
+                    height: 320px;
+                    margin-right: 5px;
+                    margin-left: 5px;
+                    flex: 1 0 calc(20% - 12px);
+                    max-width: calc(20% - 12px);
+                    border: var(--light-color) 1px solid;
+                    background-color: var(--light-color);
+                    margin-bottom: 25px;
+                    border-radius: 5px;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    -ms-border-radius: 5px;
+                    -o-border-radius: 5px;
+                    transition: all .3s ease-in-out;
+                    -webkit-transition: all .3s ease-in-out;
+                    -moz-transition: all .3s ease-in-out;
+                    -ms-transition: all .3s ease-in-out;
+                    -o-transition: all .3s ease-in-out;
+                }
+
+                    .search #search form .search-results .results .product-box:hover {
+                        transform: translateY(-20px);
+                        -webkit-transform: translateY(-20px);
+                        -moz-transform: translateY(-20px);
+                        -ms-transform: translateY(-20px);
+                        -o-transform: translateY(-20px);
+                    }
+
+                    .search #search form .search-results .results .product-box .product-img {
+                        width: 100%;
+                        height: 180px;
+                    }
+
+                        .search #search form .search-results .results .product-box .product-img img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 5px 5px 0 0;
+                        }
+
+                    .search #search form .search-results .results .product-box h2 {
+                        width: 100%;
+                        text-align: center;
+                        font-size: 16px;
+                        color: var(--background-color);
+                    }
+
+                    .search #search form .search-results .results .product-box p {
+                        font-size: 16px;
+                        margin-top: 5px;
+                        text-align: center;
+                        font-weight: bold;
+                        color: var(--orange-color);
+                    }
+
+                    .search #search form .search-results .results .product-box a.button {
+                        height: 35px;
+                        width: 90px;
+                        line-height: 35px;
+                        margin: auto;
+                        margin-top: 10px;
+                        display: block;
+                        text-align: center;
+                        font-size: 17px;
+                        color: var(--light-color);
+                        background-color: var(--orange-color);
+                        border-radius: 5px;
+                        -webkit-border-radius: 5px;
+                        -moz-border-radius: 5px;
+                        -ms-border-radius: 5px;
+                        -o-border-radius: 5px;
+                    }
+
+            .search #search form .search-results .paging {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+                .search #search form .search-results .paging a {
+                    color: var(--background-color);
+                    display: flex;
+                    width: 40px;
+                    height: 40px;
+                    justify-content: center;
+                    line-height: 45px;
+                    margin-right: 5px;
+                    border-radius: 5px;
+                    background-color: var(--second-light-color);
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    -ms-border-radius: 5px;
+                    -o-border-radius: 5px;
+                }
+
+                    .search #search form .search-results .paging a.active {
+                        background-color: var(--orange-color);
+                        color: var(--second-light-color);
+                    }

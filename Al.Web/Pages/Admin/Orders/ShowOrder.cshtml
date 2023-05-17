@@ -1,0 +1,98 @@
+﻿@page "{orderId}"
+@model Al.Web.Pages.Admin.Orders.ShowOrderModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "نمایش سفارش";
+}
+
+<link rel="stylesheet" href="~/css/basket.css" />
+<link rel="stylesheet" href="~/css/admin/admin-order.css" />
+
+<div class="fields-box">
+    <div class="field-box">
+        <div class="field-title">
+            <p>نام :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.Model.Name</p>
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="field-title">
+            <p>ایمیل :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.Model.Email</p>
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="field-title">
+            <p>شماره تلفن :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.Model.Number</p>
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="field-title">
+            <p>آدرس :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.Model.Address</p>
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="field-title">
+            <p>تاریخ :</p>
+        </div>
+        <div class="field-content">
+            <p>@Model.Model.CreatDate.ToSolarCalendar()</p>
+        </div>
+    </div>
+</div>
+<div class="basket-table">
+    <div class="head-column">
+        <div class="number-div">
+            <p>#</p>
+        </div>
+        <div class="name-div">
+            <p>نام محصول</p>
+        </div>
+        <div class="price-div">
+            <p>تعداد</p>
+        </div>
+        <div class="count-div">
+            <p>قیمت</p>
+        </div>
+        <div class="delete-div">
+            <p>تخفیف</p>
+        </div>
+    </div>
+
+    @for(var i = 1; i <= Model.Model.OrderDetails.Count; i++)
+    {
+        <div class="normal-column @((i % 2 == 0) ? "even" : "")">
+            <div class="number-div">
+                <p>@i</p>
+            </div>
+            <div class="name-div">
+                <p>@Model.Model.OrderDetails[i-1].ProductName</p>
+            </div>
+            <div class="price-div">
+                <p>@Model.Model.OrderDetails[i-1].Count</p>
+            </div>
+            <div class="count-div">
+                <p>@Model.Model.OrderDetails[i-1].Price.ToString("#,0") ت</p>
+            </div>
+            <div class="delete-div">
+                <p>@Model.Model.OrderDetails[i-1].DiscountPercent %</p>
+            </div>
+        </div>
+    }
+
+</div>
+@if(!Model.Model.IsDeliver) {
+    <div class="submit-button">
+        <a asp-page-handler="SetDeliver" asp-route-orderId="@Model.Model.OrderId">تایید ارسال</a>
+    </div>
+}

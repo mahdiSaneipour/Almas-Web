@@ -1,0 +1,60 @@
+﻿:root {
+    --background-color: #111111;
+    --main-color: #FFD700;
+    --light-color: #ebe6e6;
+    --head-column: #d8d3d3;
+    --back-pay: #c5bebe;
+    --green-color: #06a506;
+    --red-color: #ff0000;
+    --orange-color: #ff9900;
+    --a-tag-color: #043ba1;
+}
+
+body main header {
+    height: 60px;
+}
+
+/* start forgot password email */
+
+.forgot-password-email {
+    padding: 50px 0;
+}
+
+    .forgot-password-email #forgot-password-email {
+        background-color: #fff;
+        width: 100%;
+        padding: 40px 10px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+
+        .forgot-password-email #forgot-password-email .send-email-box {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            align-items: center;
+            width: fit-content;
+            max-width: 100%;
+            background-color: var(--back-pay);
+            height: 40px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+        }
+
+            .forgot-password-email #forgot-password-email .send-email-box .email-message {
+                display: flex;
+                margin: 0 10px;
+            }
+
+                .forgot-password-email #forgot-password-email .send-email-box .email-message .email {
+                    margin-right: 5px;
+                }
+
+/* end forgot password email */

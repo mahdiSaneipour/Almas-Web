@@ -1,0 +1,122 @@
+﻿@page
+@model Al.Web.Pages.Admin.Product.IndexModel
+@{
+    ViewData["Title"] = "محصولات";
+    Layout = "_AdminLayout";
+
+    var group = ViewData["Group"];
+    var subGroup = ViewData["SubGroup"];
+    SelectList lGroups = ViewData["LGroups"] as SelectList;
+    SelectList lSubGroups = ViewData["LSubGroups"] as SelectList;
+    var search = ViewData["Search"];
+    var pageId = ViewData["PageId"]; 
+}
+
+<link rel="stylesheet" href="~/css/admin/custom-select.css">
+<link rel="stylesheet" href="~/css/basket.css" />
+<link rel="stylesheet" href="~/css/admin/admin-users.css"/>
+<link rel="stylesheet" href="~/css/admin/admin-products.css" />
+
+<div class="add-button">
+    <a asp-page="AddProduct">افزودن محصول</a>
+    <i class="fa-solid fa-plus"></i>
+</div>
+
+<div class="table">
+    <form id="form">
+        <div class="head-table">
+            <div class="filter">
+                <input id="page-id" name="pageId" value="@pageId" hidden />
+                <div id="select-group" class="custom-select" style="width:200px;">
+                    <input id="selected-value" value="@group" hidden />
+
+                    <select asp-items="lGroups" class="select" name="group">
+                    </select>
+                </div>
+
+                <div class="custom-select second-selector" style="width:200px;">
+                    <input id="selected-value" value="@subGroup" hidden />
+
+                    <select asp-items="lSubGroups" class="select" name="subGroup">
+                    </select>
+                </div>
+                <div class="search">
+                    <input type="text" name="search" value="@search" placeholder="جستجو در اسم محصولات">
+                    <button>جستجو</button>
+                </div>
+            </div>
+            <div class="head-title">
+                <p>محصولات</p>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="basket-table">
+    <div class="head-column">
+        <div class="number-div">
+            <p>#</p>
+        </div>
+        <div class="name-div">
+            <p>نام محصول</p>
+        </div>
+        <div class="price-div">
+            <p>قیمت</p>
+        </div>
+        <div class="count-div">
+            <p>گروه مادر</p>
+        </div>
+        <div class="sum-div">
+            <p>گروه</p>
+        </div>
+        <div class="delete-div">
+            <p>عملیات</p>
+        </div>
+    </div>
+
+    @if (Model.Product.Products != null)
+    {
+        @for (var i = 1; i <= Model.Product.Products.Count(); i++)
+        {
+            <div class="normal-column @((i % 2 == 0) ? "even" : "")">
+                <div class="number-div">
+                    <p>@i</p>
+                </div>
+                <div class="name-div">
+                    <a href="#">@Model.Product.Products[i-1].ProductName</a>
+                </div>
+                <div class="price-div">
+                    <p>@Model.Product.Products[i-1].ProductPrice.ToString("#,0") ت</p>
+                </div>
+                <div class="count-div">
+                    <a href="#">@Model.Product.Products[i-1].GroupName</a>
+                </div>
+                <div class="sum-div">
+                    <a href="#">@Model.Product.Products[i-1].SubGroupName</a>
+                </div>
+                <div class="delete-div">
+                    <a asp-page-handler="DeleteProduct" asp-route-productId="@Model.Product.Products[i-1].ProductId">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                    <a asp-page="EditProduct" asp-route-productId="@Model.Product.Products[i-1].ProductId">
+                        <i class="fa-solid fa-pen-to-square orange"></i>
+                    </a>
+                </div>
+            </div>
+        }
+    }
+
+
+</div>
+<div class="admin-paging">
+    <div class="paging-box">
+        @for(var i = 1; i <= Model.Product.TotalPage; i++)
+        {
+            <a onclick="ClickPage(@i)" class="@((i == Model.Product.PageId) ? "active" : "")">@i</a>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/admin/custom-select.js"></script>
+    <script src="~/js/admin/table-filter.js"></script>
+}

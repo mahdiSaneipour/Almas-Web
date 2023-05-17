@@ -1,0 +1,60 @@
+﻿@page
+@model Al.Web.Pages.Profile.PurchaseHistoryModel
+@{
+    Layout = "_ProfileLayout";
+    ViewData["Title"] = "سابقه خرید";
+    ViewData["currentList"] = "سابقه خرید";
+}
+
+<link rel="stylesheet" href="~/css/purchase-history.css"/>
+
+<div class="basket-text">
+    <p>سوابق خرید</p>
+</div>
+<div class="basket-list">
+    <div class="basket-table">
+        <div class="head-column">
+            <div class="number-div">
+                <p>#</p>
+            </div>
+            <div class="name-div">
+                <p>وضعیت تحویل</p>
+            </div>
+            <div class="price-div">
+                <p>تاریخ</p>
+            </div>
+            <div class="count-div">
+                <p>تعداد</p>
+            </div>
+            <div class="sum-div">
+                <p>مجموع</p>
+            </div>
+        </div>
+        @for(var i = 1; i <= Model.Factors.Count; i++)
+        {
+            <div class="normal-column @(((i % 2) == 0) ? "even" : "")">
+                <div class="number-div">
+                    <a asp-page="ShowFactor" asp-route-factorId="@Model.Factors[i-1].FactorId">@i</a>
+                </div>
+                <div class="name-div">
+                    @if(Model.Factors[i-1].IsDeliver)
+                    {
+                        <p class="sent">ارسال شده</p>
+                    } else
+                    {
+                        <p class="sending">در حال ارسال</p>
+                    }
+                </div>
+                <div class="price-div">
+                    <p>@Model.Factors[i-1].CreatDate.ToSolarCalendar()</p>
+                </div>
+                <div class="count-div">
+                    <p>@Model.Factors[i-1].Count</p>
+                </div>
+                <div class="sum-div">
+                    <p>@Model.Factors[i-1].Sum.ToString("0,#") تومن</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

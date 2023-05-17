@@ -1,0 +1,57 @@
+﻿@page "{discountId}"
+@model Al.Web.Pages.Admin.Discounts.EditDiscountModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "ویرایش تخفیف";
+}
+
+<link rel="stylesheet" href="~/css/admin/custom-select.css">
+<link rel="stylesheet" href="~/css/admin/admin-products.css" />
+<link rel="stylesheet" href="~/css/admin/admin-sub-groups.css" />
+<link rel="stylesheet" href="~/css/admin/admin-discount.css" />
+<link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="others-info product-box">
+    <form method="post" action="">
+        <input asp-for="Discount.DiscountId" hidden>
+        <div class="field-box">
+            <input id="filter" asp-for="Discount.ProductName" class="field" type="text" placeholder="نام محصول">
+        </div>
+        <div class="field-box">
+            <input asp-for="Discount.DiscountName" class="field" type="text" placeholder="نام تخفیف">
+        </div>
+        <div class="field-box">
+            <input asp-for="Discount.Percent" class="field" type="number" placeholder="درصد تخفیف">
+        </div>
+        <div class="field-box">
+            <input asp-for="Discount.StartDate" class="date-picker field" type="text" placeholder="تاریخ شروع">
+        </div>
+        <div class="field-box">
+            <input asp-for="Discount.EndDate" class="date-picker field" type="text" placeholder="تاریخ اتمام">
+        </div>
+        <div class="field-box">
+            <div class="confirm-email-box">
+                <label for="email-c">تخفیف طلایی</label>
+                <input asp-for="Discount.IsGolden" id="email-c" type="checkbox">
+            </div>
+        </div>
+        <div class="button-box">
+            <button>ثبت</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="https://unpkg.com/persian-date@1.1.0/dist/persian-date.min.js"></script>
+    <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+    <script src="~/js/admin/date-picker.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#filter").autocomplete({
+                source: '../../api/admin/searchproduct'
+            });
+        })
+    </script>
+}

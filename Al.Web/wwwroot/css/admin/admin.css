@@ -1,0 +1,384 @@
+:root {
+    --background: #01215c;
+    --menu-color: #feba01;
+    --navbar-color: #c7ccd4;
+    --nav-text-color: #383030;
+    --background-contents: #eff0f1;
+    --background-info-box: #068006;
+    --info-box-description: #e2dada;
+    --background-search: #c9c8c8;
+    --head-table: #dad8d8;
+    --head-table-color: #1b1a1a;
+    --cross-close-red: #e20f0f;
+    --check-green: #068006;
+    --edit-orange: #ffbb00;
+    --add-green: #11c900;
+}
+
+main {
+    display:  flex;
+    justify-content: flex-end;
+}
+
+main .menu-border {
+    background-color: var(--background);
+    width: 180px;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    position: fixed;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+main .menu-border.close-menu {
+    right: -180px;
+}
+
+main .menu-border .admin-box {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--menu-color);
+    padding: 0 10px;
+    align-items: center;
+    height: 60px;
+}
+
+main .menu-border .admin-box i {
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+main .menu-border .admin-box a {
+    color: #fff;
+}
+
+main .menu-border .admin-box p {
+    color: var(--menu-color);
+}
+
+main .menu-border .menu-box {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+main .menu-border .menu-box {
+    padding: 10px 10px;
+    border-bottom: 0.5px solid #000;
+}
+
+main .menu-border .menu-box a {
+    color: #fff;
+    font-weight: normal;
+    font-size: 15px;
+    display: block;
+    width: 90%;
+}
+
+main .menu-border .menu-box i {
+    margin-top: 3px;
+    width: 10%;
+    color: #fff;
+}
+
+main .main {
+    width: calc(100% - 180px);
+    height: 100%;
+    background-color: var(--background-contents);
+    margin-left: 0;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+main .main.full-main {
+    width: 100%;
+}
+
+main .main header {
+    width: 100%;
+    height: 60px;
+    background-color: var(--navbar-color);
+    z-index: 5;
+    display: flex;
+    position: fixed;
+}
+
+main .main header .closed-menu {
+    width: 50px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -50px;
+    opacity: 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+main .main header .closed-menu.open {
+    opacity: 1;
+    right: 0;
+    position: relative;
+}
+
+main .main header .closed-menu i {
+    font-size: 20px;
+}
+
+main .main header nav {
+    width: 100%;
+    background-color: var(--navbar-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .main header nav .title {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 10px;
+
+}
+
+main .main header nav .title p {
+    color: var(--nav-text-color);
+}
+
+main .main header nav .profile {
+    background-color: var(--background);
+    height: 100%;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .main header nav .profile a {
+    margin-left: 15px;
+    color: #fff;
+
+}
+
+main .main header nav .profile i {
+    color: var(--menu-color);
+}
+
+main .main .content {
+    background-color: var(--background-contents);
+    min-height: calc(100vh - 60px);
+    margin-top: 70px;
+}
+
+main .main .content .box-contents {
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+main .main .content .box-contents .add-button {
+    height: 45px;
+    width: 200px;
+    background-color: var(--add-green);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+main .main .content .box-contents .add-button a {
+    color: #fff;
+}
+
+main .main .content .box-contents .add-button i {
+    color: #fff;
+}
+
+main .main .content .box-contents .contents {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+main .main .content .box-contents .contents .info-box {
+    width: 49%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 140px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: var(--background-info-box);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+main .main .content .box-contents .contents .info-box .title-box {
+    display: flex;
+}
+
+main .main .content .box-contents .contents .info-box .title-box p {
+    color: #fff;
+    font-size: 20px;
+}
+
+main .main .content .box-contents .contents .info-box .title-box span {
+    margin-right: 8px;
+    font-size: 20px;
+    margin-top: 3px;
+    color: #fff;
+}
+
+main .main .content .box-contents .contents .info-box .description-box p {
+    color: var(--info-box-description);
+}
+
+/* order admin */
+
+main .main .content .box-contents {
+    padding: 10px 10px;
+}
+
+main .main .content .box-contents .table {
+    background-color: var(--head-table);
+    height: 40px;
+    margin-top: 10px;
+}
+
+main .main .content .box-contents .table form {
+    height: 100%;
+}
+
+main .main .content .box-contents .table .head-table {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+main .main .content .box-contents .table .head-table .filter {
+    display: flex;
+    justify-content: flex-start;
+    width: calc(100% - 150px);
+}
+
+main .main .content .box-contents .table .head-table .filter .search {
+    width: calc(100% - 200px);
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+main .main .content .box-contents .table .head-table .filter .search input {
+    width: 80%;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+main .main .content .box-contents .table .head-table .filter .search button {
+    width: 20%;
+    height: 100%;
+    background-color: var(--add-green);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+main .main .content .box-contents .table .head-table .head-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    width: 150px;
+    color: var(--head-table-color);
+}
+
+main .main .content .box-contents .table .head-table .head-title p {
+    font-weight: bold;
+}
+
+main .main .content .box-contents .table .head-table .filter .search {
+    width: 70%;
+    background-color: var(--background-search);
+}
+
+.admin-paging {
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.admin-paging .paging-box {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-paging .paging-box a {
+    width: 35px;
+    height: 35px;
+    background-color: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--background-contents);
+    margin-right: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.admin-paging .paging-box a.active {
+    background-color: var(--menu-color);
+    color: var(--head-table-color);
+}
+
+.normal-column i {
+    font-size: 20px;
+}
+
+.basket-table .normal-column .delete-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.normal-column .delete-div i {
+    font-size: 17px;
+}
+
+.normal-column i.red {
+    color: var(--cross-close-red);
+}
+
+.normal-column i.green {
+    color: var(--check-green);
+}
+
+.normal-column i.orange {
+    color: var(--edit-orange);
+}

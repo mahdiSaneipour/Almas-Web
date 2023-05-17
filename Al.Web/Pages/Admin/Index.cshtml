@@ -1,0 +1,68 @@
+﻿@page
+@model Al.Web.Pages.Admin.IndexModel
+@{
+    Layout = "_AdminLayout";
+    var sellCount = ViewData["SellCount"];
+    long sellAmount = (long) ViewData["SellAmount"];
+    int totalUsers = (int) ViewData["TotalUsers"];
+    int totalOrders = (int) ViewData["TotalOrders"];
+    int deliveringOrders = (int) ViewData["DeliveringOrders"];
+    int totalProducts = (int) ViewData["TotalProducts"];
+}
+
+<div class="contents">
+    <div class="info-box">
+        <div class="title-box">
+            <p>تعداد فروش :</p>
+            <span>@sellCount عدد</span>
+        </div>
+        <div class="description-box">
+            <p>تعداد محصولات فروخته شده در کل مدت, ممکن از از یک محصول چند بار سفارش داده باشند که حساب شده</p>
+        </div>
+    </div>
+    <div class="info-box">
+        <div class="title-box">
+            <p>ارزش فروش :</p>
+            <span>@sellAmount.ToString("#,0") تومان</span>
+        </div>
+        <div class="description-box">
+            <p>ارزش اجناس فروخته شده در بر حسب تومان از ابتدای راه اندازی فروشگاه از طریق سفارش آنلاین</p>
+        </div>
+    </div>
+    <div class="info-box">
+        <div class="title-box">
+            <p>تعداد کاربران :</p>
+            <span>@totalUsers.ToString("#,0") کاربر</span>
+        </div>
+        <div class="description-box">
+            <p>تعداد کاربرای که در سایت ثبت نام کرده و ایمیل خود را وارد کردند, برای مشاهده دقیق تر به بخش کاربران بروید</p>
+        </div>
+    </div>
+    <div class="info-box">
+        <div class="title-box">
+            <p>تعداد سفارشات :</p>
+            <span>@totalOrders.ToString("#,0") سفارش</span>
+        </div>
+        <div class="description-box">
+            <p>تعداد سفارشاتی که کاربران ثبت و پرداخت کرده اند, یک کاربر در یک بار سفارش میتواند چندید محصول سفارش دهد, و اینجا تعداد سفارشات مد نظر است</p>
+        </div>
+    </div>
+    <div class="info-box">
+        <div class="title-box">
+            <p>سفارشات در حال ارسال :</p>
+            <span>@deliveringOrders.ToString("#,0") سفارش</span>
+        </div>
+        <div class="description-box">
+            <p>تعداد سفارشاتی که توسط مشتری پرداخت شده و در حال ارسال به دست مشتری میباشد. بعد از اینکه اطمینان حاصل کردید که سفارش به دستشان رسیده از طریق بخش سفارشات اقدام به ثبت آن بکنید</p>
+        </div>
+    </div>
+    <div class="info-box">
+        <div class="title-box">
+            <p>تعداد محصولات :</p>
+            <span>@totalProducts.ToString("#,0") محصول</span>
+        </div>
+        <div class="description-box">
+            <p>تعداد محصولاتی که توسط شما در سایت ثیت شده, برای ثبت مجصول جدی یا حذف محصولات به بهش محصولات مراجعه کنید</p>
+        </div>
+    </div>
+</div>

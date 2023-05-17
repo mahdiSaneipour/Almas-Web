@@ -1,0 +1,42 @@
+:root {
+    --background-color: #111111;
+    --main-color: #FFD700;
+    --light-color: #ebe6e6;
+    --head-column: #d8d3d3;
+    --back-pay: #c5bebe;
+    --green-color: #06a506;
+    --red-color: #ff0000;
+    --orange-color: #ff9900;
+    --a-tag-color: #043ba1;
+    --sending-color: #ff5100;
+    --sent-color: #238d23;
+}
+
+body main .profile #profile .info .basket-list .basket-table .number-div {
+    width: 7%;
+}
+
+body main .profile #profile .info .basket-list .basket-table .name-div {
+    width: 38%;
+}
+
+body main .profile #profile .info .basket-list .basket-table .name-div .sending {
+    color: var(--sending-color);
+}
+
+body main .profile #profile .info .basket-list .basket-table .name-div .sent {
+    color: var(--sent-color);
+}
+
+body main .profile #profile .info .basket-list .basket-table .price-div {
+    width: 20%;
+}
+
+body main .profile #profile .info .basket-list .basket-table .normal-column div a {
+    color: var(--a-tag-color);
+}
+
+body main .profile #profile .info .basket-list .basket-table .sum-div {
+    border-right: var(--back-pay) 1px solid;
+    border-left: var(--back-pay) 1px solid;
+}

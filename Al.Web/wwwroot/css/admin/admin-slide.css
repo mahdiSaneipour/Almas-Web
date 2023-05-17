@@ -1,0 +1,14 @@
+.others-info {
+    width: 100% !important;
+}
+
+.alert-span {
+    color: #ff0000;
+    font-size: 15px;
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+}

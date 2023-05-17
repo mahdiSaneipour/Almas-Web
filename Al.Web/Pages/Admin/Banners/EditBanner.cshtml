@@ -1,0 +1,46 @@
+﻿@page "{bannerId}"
+@model Al.Web.Pages.Admin.Banners.EditBannerModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "ویرایش بنر";
+}
+
+<link rel="stylesheet" href="~/cropper/css/cropper.css" />
+<link rel="stylesheet" href="~/css/admin/admin-products.css" />
+<link rel="stylesheet" href="~/css/admin/admin-banner.css" />
+
+<form method="post">
+    <input asp-for="Banner.BannerId" hidden />
+    <div class="product-box">
+        <div class="select-image">
+            <div style="text-align: center;">
+
+                <div style="width:100%">
+                    <img style="width:100%; height:100%" id="image" src="~/images/banners/@Model.Banner.ImageUrl" />
+                </div>
+
+                <input name="SelectedAvatarFile" id="file" type="file" class="cropper-hidden" />
+
+                <input id="previous-banner" value="@Model.Banner.ImageUrl" hidden />
+
+                <input id="banner-image" asp-for="Banner.ImageUrl" hidden />
+
+                <button form="" id="save-profile" style="">ثبت عکس</button>
+            </div>
+        </div>
+        <div class="others-info">
+            <div class="field-box">
+                <input type="text" asp-for="Banner.Link" placeholder="لینک را وارد کنید">
+            </div>
+            <div class="button-box">
+                <button>ثبت</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <script src="~/cropper/js/cropper.js"></script>
+    <script src="~/js/admin/admin-banner-image-cropper.js"></script>
+}

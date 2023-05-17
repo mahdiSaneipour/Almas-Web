@@ -1,0 +1,33 @@
+﻿@page
+@model Al.Web.Pages.Profile.IndexModel
+@{
+    Layout = "_ProfileLayout";
+    ViewData["Title"] = "پروفایل";
+    ViewData["currentList"] = "مشخصات کاربر";
+}
+
+<div class="desc-product">
+    <div class="info-field">
+        <p>نام : </p>
+        <p class="value">@Model.Info.Name</p class="value">
+    </div>
+    <div class="info-field">
+        <p>ایمیل</p>
+        <p class="value">@Model.Info.Email</p class="value">
+    </div>
+    <div class="info-field">
+        <p>نام کاربری : </p>
+        <p class="value">@Model.Info.Username</p class="value">
+    </div>
+    <div class="info-field">
+        <p>شماره تلفن</p>
+        <p class="value">@((!String.IsNullOrEmpty(Model.Info.Phone)) ? @Model.Info.Phone : "شماره تلفنی ثبت نشده")</p class="value">
+    </div>
+    <div class="info-field">
+        <p>آدرس</p>
+        <p class="value">@((!String.IsNullOrEmpty(Model.Info.Address)) ? @Model.Info.Address : "آدرسی ثبت نشده")</p class="value">
+    </div>
+</div>
+<div class="edit-button">
+    <a asp-page="EditProfile">ویرایش مشخصات کاربری</a>
+</div>

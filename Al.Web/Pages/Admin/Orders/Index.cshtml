@@ -1,0 +1,102 @@
+﻿@page
+@model Al.Web.Pages.Admin.Orders.IndexModel
+@{
+    ViewData["Title"] = "سفارشات";
+    Layout = "_AdminLayout";
+    var filter = ViewData["Filter"];
+    int pageId = (int) ViewData["PageId"];
+}
+
+<link rel="stylesheet" href="~/css/admin/custom-select.css"/>
+<link rel="stylesheet" href="~/css/basket.css"/>
+
+<div class="table">
+    <div class="head-table">
+        <div class="filter">
+            <form method="get" id="form">
+                <input id="page-id" name="pageId" value="@pageId" hidden/>
+
+                <div class="custom-select" style="width:200px;">
+                    <input id="selected-value" value="@filter" hidden />
+
+                    <select class="select" name="filter">
+                        <option value="All">همه</option>
+                        <option value="Sent">ارسال شده</option>
+                        <option value="Sending">درحال ارسال</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="head-title">
+            <p>سفارشات کاربران</p>
+        </div>
+    </div>
+</div>
+<div class="basket-table">
+    <div class="head-column">
+        <div class="number-div">
+            <p>#</p>
+        </div>
+        <div class="name-div">
+            <p>نام کاربر</p>
+        </div>
+        <div class="price-div">
+            <p>تاریخ</p>
+        </div>
+        <div class="count-div">
+            <p>تعداد</p>
+        </div>
+        <div class="sum-div">
+            <p>مجموع</p>
+        </div>
+        <div class="delete-div">
+            <p>ارسال</p>
+        </div>
+    </div>
+    @for(var i = 1; i <= Model.Model.Item2.Count; i++)
+    {
+        <div class="normal-column @((i % 2 == 0) ? "even" : "")">
+            <div class="number-div">
+                <p>@i</p>
+            </div>
+            <div class="name-div">
+                <a asp-page="ShowOrder" asp-route-orderId="@Model.Model.Item2[i-1].FactorId">@Model.Model.Item2[i-1].FactorName</a>
+            </div>
+            <div class="price-div">
+                <p>@Model.Model.Item2[i-1].CreatDate.ToSolarCalendar()</p>
+            </div>
+            <div class="count-div">
+                <p>@Model.Model.Item2[i-1].Count</p>
+            </div>
+            <div class="sum-div">
+                <p>@Model.Model.Item2[i-1].Sum.ToString("#,0") ت</p>
+            </div>
+            <div class="delete-div">
+                @if (Model.Model.Item2[i-1].IsDeliver)
+                {
+                    <a href="#">
+                        <i class="green fa-solid fa-check"></i>
+                    </a>
+                } else
+                {
+                    <a href="#">
+                        <i class="red fa-solid fa-xmark"></i>
+                    </a>
+                }
+            </div>
+        </div>
+    }
+</div>
+<div class="admin-paging">
+    <div class="paging-box">
+        @for(var i = 1; i <= Model.Model.Item1; i++)
+        {
+            <a onclick="ClickPage(@i)" class=@((i == pageId) ? "active" : "")>@i</a>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/js/admin/custom-select.js"></script>
+    <script src="~/js/admin/table-filter.js"></script>
+}

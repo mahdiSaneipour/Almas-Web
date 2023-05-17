@@ -1,0 +1,211 @@
+:root {
+    --background-color: #111111;
+    --main-color: #FFD700;
+    --light-color: #ebe6e6;
+    --head-column: #d8d3d3;
+    --back-pay: #c5bebe;
+    --green-color: #06a506;
+    --red-color: #ff0000;
+    --orange-color: #ff9900;
+    --a-tag-color: #043ba1;
+}
+
+body main header {
+    height: 60px;
+}
+
+body main .profile #profile .info .basket-text {
+    width: 150px;
+    position: relative;
+}
+
+body main .profile #profile .info .basket-text::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--red-color);
+}
+
+body main .profile #profile .info .basket-text p {
+    font-size: 19px;
+    margin-right: 1px;
+}
+
+body main .profile #profile .info .basket-list {
+    margin-top: 20px;
+}
+
+.basket-table {
+    width: 100%;
+    height: fit-content;
+    margin-top: 10px;
+}
+
+.basket-table .head-column {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--head-column);
+    border-top: var(--back-pay) 1px solid;
+    box-sizing: border-box;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+}
+
+.basket-table .normal-column {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.basket-table .normal-column div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.basket-table .normal-column .delete-div a {
+    color: var(--red-color);
+}
+
+.basket-table .normal-column:last-child {
+    border-bottom: var(--back-pay) 1px solid;
+    border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -ms-border-radius: 0 0 5px 5px;
+    -o-border-radius: 0 0 5px 5px;
+}
+
+.basket-table .normal-column.even {
+    background-color: var(--light-color);
+}
+
+.basket-table .number-div {
+    width: 5%;
+    text-align: center;
+    padding: 10px 0;
+    border-right: var(--back-pay) 1px solid;
+}
+
+.basket-table .head-column .number-div {
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+    -ms-border-radius: 0 5px 0 0;
+    -o-border-radius: 0 5px 0 0;
+}
+
+.basket-table .head-column p {
+    font-size: 15px;
+}
+
+.basket-table .head-column .sum-div {
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+    -ms-border-radius: 5px 0 0 0;
+    -o-border-radius: 5px 0 0 0;
+}
+
+.basket-table .normal-column:last-child .number-div {
+    border-radius: 0 0 5px 0;
+    -webkit-border-radius: 0 0 5px 0;
+    -moz-border-radius: 0 0 5px 0;
+    -ms-border-radius: 0 0 5px 0;
+    -o-border-radius: 0 0 5px 0;
+}
+
+.basket-table .normal-column:last-child .sum-div {
+    border-radius: 0 0 0 5px;
+    -webkit-border-radius: 0 0 0 5px;
+    -moz-border-radius: 0 0 0 5px;
+    -ms-border-radius: 0 0 0 5px;
+    -o-border-radius: 0 0 0 5px;
+}
+
+.basket-table .name-div {
+    width: 35%;
+    text-align: center;
+    padding: 10px 0;
+    border-right: var(--back-pay) 1px solid;
+}
+
+.basket-table .name-div a {
+    color: var(--a-tag-color);
+}
+
+.basket-table .price-div {
+    width: 18%;
+    text-align: center;
+    padding: 10px 0;
+    border-right: var(--back-pay) 1px solid;
+}
+
+.basket-table .count-div {
+    width: 10%;
+    text-align: center;
+    padding: 10px 0;
+    border-right: var(--back-pay) 1px solid;
+}
+
+.basket-table .sum-div {
+    width: 25%;
+    text-align: center;
+    padding: 10px 0;
+    border-right: var(--back-pay) 1px solid;
+}
+
+.basket-table .delete-div {
+    width: 7%;
+    text-align: center;
+    padding: 10px 0;
+    border-right: var(--back-pay) 1px solid;
+    border-left: var(--back-pay) 1px solid;
+}
+
+body main .profile #profile .info .pay-back {
+    width: 100%;
+    margin-top: 30px;
+}
+
+body main .profile #profile .info .pay-back .pay-box {
+    width: 270px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    background-color: var(--back-pay);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+body main .profile #profile .info .pay-back .pay-box p {
+    margin-right: 10px;
+
+}
+
+body main .profile #profile .info .pay-back .pay-box a {
+    display: block;
+    width: 90px;
+    height: 100%;
+    background-color: var(--green-color);
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 5px 0 0 5px;
+    -webkit-border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
+    -ms-border-radius: 5px 0 0 5px;
+    -o-border-radius: 5px 0 0 5px;
+}

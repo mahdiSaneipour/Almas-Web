@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+</head>
+
+<link rel="stylesheet" href="~/css/basic.css">
+<link rel="stylesheet" href="~/fontawesome-free-6.2.1-web/css/all.min.css" />
+<link rel="stylesheet" href="~/css/main.css">
+<link rel="stylesheet" href="~/css/profile.css">
+<link rel="stylesheet" href="~/css/basket.css">
+<link rel="stylesheet" href="~/css/responsive.css" />
+
+@inject IBasketService _basketService
+@{
+    string profileList = ViewData["currentList"] as string;
+}
+
+<body>
+    <main>
+        <header>
+            <nav>
+                <div class="container">
+                    <section class="header">
+                        @await Component.InvokeAsync("GroupsComponent")
+
+                        <div class="left-side">
+                            <div class="info-box">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <div class="registered">
+                                        <p>سلام <a href="~/Profile">مهدی</a> !</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="not-registered">
+                                        <a href="~/Account/Login">ورود</a>
+                                        /
+                                        <a href="~/Account/Singup">ثبت نام</a>
+                                    </div>
+                                }
+                            </div>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="basket-box">
+                                    <a href="~/Profile/Basket">
+                                        <i class="fa-solid fa-basket-shopping"></i>
+                                        <span>@_basketService.CountOfBasket()</span>
+                                    </a>
+                                </div>
+                            }
+
+                        </div>
+                    </section>
+                </div>
+            </nav>
+        </header>
+        <section class="profile">
+            <div class="container">
+                <div id="profile">
+                    <div class="profile-list">
+                        <ul>
+                            <li class="@((profileList == "مشخصات کاربر") ? "active" : "")"><a asp-page="Index">مشخصات کاربر</a></li>
+                            <li class="@((profileList == "ویرایش مشخصات") ? "active" : "")"><a asp-page="EditProfile">ویرایش مشخصات</a></li>
+                            <li class="@((profileList == "سبد خرید") ? "active" : "")"><a asp-page="Basket">سبد خرید</a></li>
+                            <li class="@((profileList == "سابقه خرید") ? "active" : "")"><a asp-page="PurchaseHistory">سابقه خرید</a></li>
+                            <li class="@((profileList == "تغییر رمز عبور") ? "active" : "")"><a asp-page="ChangePassword">تغییر رمز عبور</a></li>
+                            <li class="exit"><a asp-page="../Account/Singup" asp-page-handler="Logout">خروج</a></li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="back-menu"></div>
+
+    <script src="js/responsive-menu.js"></script>
+
+</body>
+</html>

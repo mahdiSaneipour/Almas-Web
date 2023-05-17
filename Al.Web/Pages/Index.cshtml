@@ -1,0 +1,284 @@
+﻿@page
+@using Al.Core.DTOs.Home;
+@model IndexModel
+@{
+    ViewData["Title"] = "خانه";
+    List<SlideBannerViewModel> banners = ViewData["Banners"] as List<SlideBannerViewModel>;
+    List<ProductSlidesViewModel> slides = ViewData["Slides"] as List<ProductSlidesViewModel>;
+    List<ProductBoxViewModel> goldens = ViewData["Goldens"] as List<ProductBoxViewModel>;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<section class="search-header">
+    <div class="container">
+        <div id="search-header">
+            <div class="search-box">
+                <form method="get" asp-page="Product/Search">
+                    <input id="filter" type="text" name="Search.Search" />
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <div class="most-visited">
+                    <div class="option-box">
+                        <a href="#">
+                            <i class="fa-solid fa-hashtag"></i>
+                            <a href="#">موتور_برق</a>
+                        </a>
+                    </div>
+                    <div class="option-box">
+                        <a href="#">
+                            <i class="fa-solid fa-hashtag"></i>
+                            <a href="#">موتور_آب</a>
+                        </a>
+                    </div>
+                    <div class="option-box">
+                        <a href="#">
+                            <i class="fa-solid fa-hashtag"></i>
+                            <a href="#">آره_برقی</a>
+                        </a>
+                    </div>
+                    <div class="option-box">
+                        <a href="#">
+                            <i class="fa-solid fa-hashtag"></i>
+                            <a href="#">ماشین_چمنزنی</a>
+                        </a>
+                    </div>
+                    <div class="option-box">
+                        <a href="#">
+                            <i class="fa-solid fa-hashtag"></i>
+                            <a href="#">آهن_آره_برقی</a>
+                        </a>
+                    </div>
+                    <div class="option-box">
+                        <a href="#">
+                            <i class="fa-solid fa-hashtag"></i>
+                            <a href="#">دستگاه_جوش</a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="logo-box">
+                <img src="images/logo.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="banner">
+    <div class="container">
+        <div class="slider-parent">
+            <div class="control-right"></div>
+            <div class="images-box">
+                @foreach(var banner in banners)
+                {
+                    <div class="image-box">
+                        <a target="_blank" href="@banner.Link">
+                            <img src="~/images/banners/@banner.ImageUrl" />
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="control-left"></div>
+        </div>
+
+    </div>
+</section>
+
+@for(var i = 0; i < (slides.Count - 1); i++)
+{
+    <section class="products">
+        <div class="container">
+            <div id="products">
+                <div class="products-header">
+                    <div class="products-title">
+                        <h2>@slides[i].GroupName</h2>
+                    </div>
+                    <div class="more-products">
+                        <a asp-page="Product/Search" asp-route-groups="@slides[i].GroupId">همه @slides[i].GroupName</a>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+                <div class="show-products">
+                    <div class="control-products">
+                        <div>
+                            <i class="fa-solid fa-circle-right products-right"></i>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-circle-left products-left"></i>
+                        </div>
+                    </div>
+                    <div class="slide-products">
+                        @foreach (var box in slides[i].Slides)
+                        {
+                            <div class="product-box">
+                                <a asp-page="Product/ShowProduct" asp-route-productId="@box.ProductId">
+                                    <div class="product-img">
+                                        <img src="images/products/thumb/@box.ProductImage" alt="">
+                                    </div>
+                                    <h2>@box.ProductName</h2>
+                                    @if(box.OldPrice != 0)
+                                    {
+                                        <div class="old-price">
+                                            <p>@box.OldPrice.ToString("#,0") تومان</p>
+                                        </div>
+                                    }
+                                    <p>@box.NewPrice.ToString("#,0") تومان</p>
+                                    <a class="button" asp-page="Product/ShowProduct" asp-route-productId="@box.ProductId">مشاهده</a>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="discounts">
+    <div class="container">
+        <div id="discounts">
+            <div class="discounts-header">
+                <h2>تخفیف های ویژه</h2>
+            </div>
+
+            <div class="discount-row">
+                <div class="discount-alert">
+                    <p>تخفیف ها طلایی را از دست ندهید</p>
+                </div>
+                <div class="discounts-show">
+                    @foreach(var golden in goldens)
+                    {
+                        <div class="discount-box">
+                            <a asp-page="Product/ShowProduct" asp-route-productId="@golden.ProductId">
+                                <div class="discount-img">
+                                    <img src="images/products/thumb/@golden.ProductImage" alt="@golden.ProductImage">
+                                </div>
+                                <h2>@golden.ProductName</h2>
+                                <div class="old-price">
+                                    <p>@golden.OldPrice.ToString("#,0") تومان</p>
+                                </div>
+                                <p class="new-price">@golden.NewPrice.ToString("#,0") تومان</p>
+                                <a class="button" href="#">مشاهده</a>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@for (var i = (slides.Count - 1); i < slides.Count; i++)
+{
+    <section class="products">
+        <div class="container">
+            <div id="products">
+                <div class="products-header">
+                    <div class="products-title">
+                        <h2>@slides[i].GroupName</h2>
+                    </div>
+                    <div class="more-products">
+                        <a asp-page="Product/Search" asp-route-groups="@slides[i].GroupId">همه @slides[i].GroupName</a>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+                <div class="show-products">
+                    <div class="control-products">
+                        <div>
+                            <i class="fa-solid fa-circle-right products-right"></i>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-circle-left products-left"></i>
+                        </div>
+                    </div>
+                    <div class="slide-products">
+                        @foreach (var box in slides[i].Slides)
+                        {
+                            <div class="product-box">
+                                <a asp-page="Product/ShowProduct" asp-route-productId="@box.ProductId">
+                                    <div class="product-img">
+                                        <img src="images/products/thumb/@box.ProductImage" alt="">
+                                    </div>
+                                    <h2>@box.ProductName</h2>
+                                    @if (box.OldPrice != 0)
+                                    {
+                                        <div class="old-price">
+                                            <p>@box.OldPrice.ToString("#,0") تومان</p>
+                                        </div>
+                                    }
+                                    <p>@box.NewPrice.ToString("#,0") تومان</p>
+                                    <a class="button" asp-page="Product/ShowProduct" asp-route-productId="@box.ProductId">مشاهده</a>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<footer>
+    <div class="footer-1">
+        <div class="container">
+            <div id="footer-1">
+                <div class="credit-symbol">
+                    <a href="#"><img src="images/logo.png" alt=""></a>
+                    <a href="#"><img src="images/logo.png" alt=""></a>
+                </div>
+
+                <div class="center-footer">
+                    <div class="social-media">
+                        <a href="#">
+                            <i class="fa-brands fa-instagram insta"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-brands fa-telegram telegram"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-brands fa-whatsapp whats"></i>
+                        </a>
+                    </div>
+                    <div class="adress-footer">
+                        <p>گناباد - سه راهی مند - کوچه اول - پلاک 23</p>
+                    </div>
+                </div>
+
+                <div class="mobile">
+                    <div class="mobile-box">
+                        <i class="fa-solid fa-mobile"></i>
+                        <p>+98 903 080 5145</p>
+                    </div>
+                    <div class="mobile-box">
+                        <i class="fa-solid fa-mobile"></i>
+                        <p>021 44 7181 44</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-2">
+                <p>برای اطلاع از آخرین اخبار و تخفیف ها شماره خودرا وارد کنید.</p>
+                <form action="">
+                    <input name="phone" type="tel" placeholder="شماره موبایل خود را وارد کنید" />
+                    <button>ثبت</button>
+                </form>
+            </div>
+            <div class="footer-3">
+                <p>تمامی حقوق مادی و معنی متعلق به فروشگاه الماس میباشد ©</p>
+                <p>برنامه نویسی شده توسط <a href="#">مهدی صانعی پور</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+@section Scripts {
+    <script src="~/js/banner-slider.js"></script>
+    <script src="~/js/products-slide.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#filter").autocomplete({
+                source: '../../api/admin/searchproduct'
+            });
+        })
+    </script>
+}

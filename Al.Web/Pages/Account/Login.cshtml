@@ -1,0 +1,31 @@
+﻿@page
+@model Al.Web.Pages.Account.LoginModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/sing-up.css"/>
+
+<main>
+    <section class="sing-up">
+        <div id="sing-up">
+            <p class="title">ورود به سایت</p>
+            <form method="post" autocomplete="off">
+                <div class="input-box">
+                    <input asp-for="User.Email" placeholder="ایمیل خود را وارد کنید">
+                    <span asp-validation-for="User.Email"></span>
+                </div>
+                <div class="input-box">
+                    <input asp-for="User.Password" placeholder="رمز عبور خود را وارد کنید">
+                    <span asp-validation-for="User.Password"></span>
+
+                </div>
+                <div class="button-box">
+                    <button>ورود</button>
+                </div>
+                <div class="login">
+                    <a asp-page="Singup">قبلا ثبت نام کرده اید؟ ورود</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>

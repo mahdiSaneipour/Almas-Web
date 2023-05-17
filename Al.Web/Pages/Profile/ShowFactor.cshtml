@@ -1,0 +1,70 @@
+﻿@page "{factorId}"
+@model Al.Web.Pages.Profile.ShowFactorModel
+@{
+    Layout = "_ProfileLayout";
+    ViewData["Title"] = "سبد خرید";
+    ViewData["currentList"] = "سبد خرید";
+}
+
+<div class="basket-text">
+    <p>سبد خرید</p>
+</div>
+<div class="basket-list">
+    <div class="basket-table">
+        <div class="head-column">
+            <div class="number-div">
+                <p>#</p>
+            </div>
+            <div class="name-div">
+                <p>نام محصول</p>
+            </div>
+            <div class="price-div">
+                <p>قیمت</p>
+            </div>
+            <div class="count-div">
+                <p>تعداد</p>
+            </div>
+            <div class="sum-div">
+                <p>مجموع</p>
+            </div>
+            <div class="delete-div">
+                <p>حذف</p>
+            </div>
+        </div>
+
+        @if (Model.Factor != null)
+        {
+            @for (var i = 0; i < Model.Factor.FactorDetails.Count; i++)
+            {
+                Domain.Entities.Factors.FactorDetail factorDetail = Model.Factor.FactorDetails.ToList()[i];
+
+                <div class="normal-column @(((i % 2) != 0) ? "even" : "")">
+
+                    <div class="number-div">
+                        <p>@i</p>
+                    </div>
+                    <div class="name-div">
+                        <a asp-page="../Product/ShowProduct" asp-route-productId="@factorDetail.ProductId">آره موتوری</a>
+                    </div>
+                    <div class="price-div">
+                        <p>@factorDetail.Price.ToString("#,0") ت</p>
+                    </div>
+                    <div class="count-div">
+                        <p>@factorDetail.Count</p>
+                    </div>
+                    <div class="sum-div">
+                        @{
+                            long totalPrice = factorDetail.Price * factorDetail.Count;
+                        }
+                        @totalPrice.ToString("#,0") ت
+                    </div>
+                    <div class="delete-div">
+                        <a href="#">
+                            --
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

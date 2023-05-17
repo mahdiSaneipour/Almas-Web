@@ -1,0 +1,83 @@
+﻿@page
+@model Al.Web.Pages.Admin.Slides.IndexModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "اسلاید ها";
+    SelectList lGroups = ViewData["LGroups"] as SelectList;
+    var group = ViewData["Group"];
+}
+
+<link rel="stylesheet" href="~/css/admin/custom-select.css">
+<link rel="stylesheet" href="~/css/basket.css" />
+<link rel="stylesheet" href="~/css/admin/admin-sub-groups.css" />
+
+<div class="add-button">
+    <a asp-page="AddSlide">افزودن اسلاید</a>
+    <i class="fa-solid fa-plus"></i>
+</div>
+<div class="table">
+    <form id="form">
+        <div class="head-table">
+            <input id="page-id" name="pageId" value="@Model.Model.PageId" hidden />
+            <div class="filter">
+                <div class="custom-select" style="width:200px;">
+                    <input id="selected-value" value="@group" hidden />
+
+                    <select class="select" name="group" asp-items="lGroups">
+                    </select>
+                </div>
+            </div>
+            <div class="head-title">
+                <p>اسلاید ها</p>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="basket-table">
+    <div class="head-column">
+        <div class="number-div">
+            <p>#</p>
+        </div>
+        <div class="name-div">
+            <p>نام محصول</p>
+        </div>
+        <div class="price-div">
+            <p>گروه مادر</p>
+        </div>
+        <div class="delete-div">
+            <p>عملیات</p>
+        </div>
+    </div>
+    @for (var i = 1; i <= Model.Model.Slides.Count; i++)
+    {
+        <div class="normal-column @((i % 2 == 0) ? "even" : "" )">
+            <div class="number-div">
+                <p>@i</p>
+            </div>
+            <div class="name-div">
+                <a asp-page="../../Product/ShowProduct" asp-route-productId="@Model.Model.Slides[i-1].ProductId">@Model.Model.Slides[i-1].ProductName</a>
+            </div>
+            <div class="price-div">
+                <a asp-page="../../Product/Search" asp-route-groups="@Model.Model.Slides[i-1].GroupId">@Model.Model.Slides[i-1].GroupName</a>
+            </div>
+            <div class="delete-div">
+                <a asp-page-handler="DeleteSlide" asp-route-slideId="@Model.Model.Slides[i-1].SlideId">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+            </div>
+        </div>
+    }
+</div>
+<div class="admin-paging">
+    <div class="paging-box">
+        @for (var i = 1; i <= Model.Model.TotalPage; i++)
+        {
+            <a onclick="ClickPage(@i)" class=@((Model.Model.PageId == i) ? "active" : "")>@i</a>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/admin/custom-select.js"></script>
+    <script src="~/js/admin/table-filter.js"></script>
+}

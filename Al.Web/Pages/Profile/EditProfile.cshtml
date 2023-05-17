@@ -1,0 +1,31 @@
+﻿@page
+@model Al.Web.Pages.Profile.EditProfileModel
+@{
+    Layout = "_ProfileLayout";
+    ViewData["Title"] = "ویرایش مشخصات";
+    ViewData["currentList"] = "ویرایش مشخصات";
+}
+
+
+<form method="post" autocomplete="off">
+    <div class="desc-product">
+        <div class="info-field">
+            <input asp-for="Info.Name" placeholder="نام و نام خانوادگی خود را وارد کنید"/>
+        </div>
+        <div class="info-field">
+            <input asp-for="Info.Email" placeholder="ایمیل خود را وارد کنید"/>
+        </div>
+        <div class="info-field">
+            <input asp-for="Info.Username" placeholder="نام کاربری خود را وارد کنید"/>
+        </div>
+        <div class="info-field">
+            <input asp-for="Info.Phone" placeholder="شماره تلفن خود را وارد کنید"/>
+        </div>
+        <div class="info-field">
+            <input asp-for="Info.Address" placeholder="آدرس خود را وارد کنید"/>
+        </div>
+    </div>
+    <div class="edit-button password">
+        <button type="submit">ذخیره تغیرات</button>
+    </div>
+</form>

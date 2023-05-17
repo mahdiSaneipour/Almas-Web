@@ -1,0 +1,86 @@
+﻿@page "{productId}"
+@model Al.Web.Pages.Product.ShowProductModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/show-product.css" />
+<link rel="stylesheet" href="~/css/responsive.css" />
+
+<section class="product">
+    <div class="container">
+        <div class="path-product">
+            <a href="/">خانه</a> / <a href="@Model.Product.ParentGroupId">@Model.Product.ParentGroupName</a> / <a href="@Model.Product.GroupId">@Model.Product.GroupName</a> / <a href="#">@Model.Product.Name</a>
+        </div>
+        <div id="product">
+            @if (Model.Product.Images != null)
+            {
+                <div class="img-product">
+                    <div class="main-img">
+                        <img src="~/images/products/normal/@Model.Product.Images[0]" alt="">
+                    </div>
+                    <div class="others-img">
+                        @foreach (var image in Model.Product.Images)
+                        {
+                            <div class="img active" style="background-image:url(@HttpContext.Request.Scheme://@HttpContext.Request.Host/images/products/thumb/@image);"></div>
+                        }
+                    </div>
+                </div>
+            }
+            <div class="desc-product">
+                <form id="add-to-basket" asp-page="../Profile/Basket" asp-page-handler="AddToBasket" method="post">
+                    <input name="model.productId" value="@Model.Product.ProductId" hidden/>
+                    <div class="info-field">
+                        <p>مدل : </p>
+                        <h2>@Model.Product.ModelName</h2>
+                    </div>
+                    <div class="info-field">
+                        <p>سال ساخت : </p>
+                        <h2>@Model.Product.Year</h2>
+                    </div>
+                    <div class="info-field">
+                        <p>رنگ : </p>
+                        <h2>@Model.Product.Color</h2>
+                    </div>
+                    <div class="info-field">
+                        <p>ساخت کشور : </p>
+                        <h2>@Model.Product.Country</h2>
+                    </div>
+                    <div class="info-field">
+                        <p>ساخت کارخانه : </p>
+                        <h2>@Model.Product.Factory</h2>
+                    </div>
+                    <div class="info-field">
+                        <p>قیمت : </p>
+                        <div class="price-box">
+                            @if (Model.Product.OldPrice != 0)
+                            {
+                                <p class="counted">@Model.Product.OldPrice.ToString("#,0") ت</p>
+                            }
+                            <p class="">@Model.Product.Price.ToString("#,0") ت</p>
+                        </div>
+                    </div>
+                    <div class="info-field">
+                        <p>@Model.Product.Description</p>
+                    </div>
+                    <div class="count-product">
+                        <div class="increase">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <input name="model.Count" class="count" type="number" min="1" value="1">
+                        <div class="decrease">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </div>
+                    </div>
+                    <div class="button-product">
+                        <button id="submit" form="add-to-basket" type="submit">افزودن به سبد خرید</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/product-images.js"></script>
+    <script src="~/js/show-product.js"></script>
+}

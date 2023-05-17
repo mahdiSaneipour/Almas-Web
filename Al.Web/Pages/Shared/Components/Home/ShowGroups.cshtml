@@ -1,0 +1,59 @@
+﻿@model List<Al.Domain.Entities.Product.ProductGroup>
+
+<div class="menu-bar">
+    <ul class="main-ul">
+
+        <li class="main-li">
+            <a asp-page="../Index" class="main-a">خانه</a>
+            <ul>
+            </ul>
+        </li>
+
+        @foreach (var menu in Model.Where(g => g.ParentId == null))
+        {
+            <li class="main-li">
+                <a href="~/Product/Search?groups=@menu.GroupId" class="main-a">@menu.GroupName</a>
+                @if(Model.Any(g => g.ParentId == menu.GroupId))
+                {
+                    <ul>
+                        @foreach (var subMenu in Model.Where(sg => sg.ParentId == menu.GroupId))
+                        {
+                            <li><a href="~/Product/Search?groups=@subMenu.GroupId">@subMenu.GroupName</a></li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+</div>
+<div class="res-button">
+    <i id="button-menu" class="fa-sharp fa-solid fa-bars menu-button"></i>
+</div>
+<div class="menu-res">
+
+    <ul class="res-main-ul">
+
+        <li class="res-main-li">
+            <a asp-page="../Index" class="res-main-a">خانه</a>
+            <ul>
+            </ul>
+        </li>
+
+        @foreach (var menu in Model.Where(g => g.ParentId == null))
+        {
+            <li class="res-main-li">
+                <a href="~/Product/Search?groups=@menu.GroupId" class="res-main-a">@menu.GroupName</a>
+                @if (Model.Any(g => g.ParentId == menu.GroupId))
+                {
+                    <ul>
+                        @foreach (var subMenu in Model.Where(sg => sg.ParentId == menu.GroupId))
+                        {
+                            <li><a href="~/Product/Search?groups=@subMenu.GroupId">@subMenu.GroupName</a></li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+
+    </ul>
+</div>

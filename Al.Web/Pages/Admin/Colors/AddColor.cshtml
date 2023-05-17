@@ -1,0 +1,18 @@
+﻿@page
+@model Al.Web.Pages.Admin.Colors.AddColorModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "افزودن رنگ";
+}
+
+<link rel="stylesheet" href="~/css/admin/admin-groups.css" />
+
+<form method="post">
+    <input asp-for="Color.ColorId" hidden />
+    <div class="name-box">
+        <input type="text" asp-for="Color.ColorName" placeholder="نام رنگ را وارد کنید">
+    </div>
+    <div class="button-box">
+        <button>ثبت</button>
+    </div>
+</form>

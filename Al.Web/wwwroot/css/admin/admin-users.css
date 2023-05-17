@@ -1,0 +1,102 @@
+:root {
+    --background: #01215c;
+    --menu-color: #feba01;
+    --navbar-color: #c7ccd4;
+    --nav-text-color: #383030;
+    --background-contents: #eff0f1;
+    --background-info-box: #068006;
+    --info-box-description: #e2dada;
+    --background-search: #c9c8c8;
+    --head-table: #dad8d8;
+    --head-table-color: #1b1a1a;
+    --cross-close-red: #e20f0f;
+    --check-green: #068006;
+    --edit-orange: #ffbb00;
+    --add-green: #11c900;
+    --select-gray: #7a7584;
+}
+
+.basket-table div.count-div {
+    width: 20%;
+}
+
+.basket-table div.sum-div {
+    width: 15%;
+}
+
+.user-info.fields-box .field-box {
+    width: 100%;
+    height: fit-content;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--info-box-description);
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+    .user-info.fields-box .field-box .field-title p {
+        color: var(--head-table-color);
+        font-size: 15px;
+    }
+
+    .user-info.fields-box .field-box .field-content p {
+        color: var(--select-gray);
+        font-size: 15px;
+    }
+
+    .user-info.fields-box .field-box input {
+        width: 100%;
+        color: var(--nav-text-color);
+        font-size: 15px;
+    }
+
+    .user-info.fields-box .field-box .confirm-email-box {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+        .user-info.fields-box .field-box .confirm-email-box input {
+            width: fit-content;
+            margin-right: 10px;
+        }
+
+        .user-info.fields-box .field-box .confirm-email-box label {
+            color: var(--nav-text-color);
+        }
+
+
+.button-box {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .button-box button {
+        width: 180px;
+        height: 40px;
+        font-size: 16px;
+        margin: auto;
+        background-color: var(--add-green);
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+
+    .green {
+        color: var(--check-green);
+    }
+
+.red {
+    color: var(--cross-close-red)
+}
