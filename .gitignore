@@ -397,4 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /Al.Web/wwwroot/images/banners/*
-/Al.Web/wwwroot/images/products/normal/08de0713845d4d5ba5691cbf74148b46.png
+/Al.Web/wwwroot/images/products/normal/*
+/Al.Web/wwwroot/images/products/thumb/*
