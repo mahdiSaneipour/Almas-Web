@@ -48,7 +48,7 @@ namespace Al.Data.Repository.Products.Product
         public IQueryable<Domain.Entities.Product.Product> GetProductsSliderByGroupId(int parentId)
         {
             return _context.Products.Include(p => p.Group).ThenInclude(g => g.Parent).Include(p => p.Images)
-                .Include(p => p.Discount).Where(p => p.Group.ParentId == parentId && p.IsSlide);
+                .Include(p => p.Discount).Where(p => p.Group.ParentId == parentId && p.IsSlide).AsSplitQuery();
         }
 
         public int GetTotalProducts()

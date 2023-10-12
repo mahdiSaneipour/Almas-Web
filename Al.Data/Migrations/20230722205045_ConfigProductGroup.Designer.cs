@@ -4,6 +4,7 @@ using Al.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Al.Data.Migrations
 {
     [DbContext(typeof(AlContext))]
-    partial class AlContextModelSnapshot : ModelSnapshot
+    [Migration("20230722205045_ConfigProductGroup")]
+    partial class ConfigProductGroup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,28 +195,6 @@ namespace Al.Data.Migrations
                     b.HasKey("ColorId");
 
                     b.ToTable("Colors");
-
-                    b.HasData(
-                        new
-                        {
-                            ColorId = 1,
-                            ColorName = "قرمز"
-                        },
-                        new
-                        {
-                            ColorId = 2,
-                            ColorName = "آبی"
-                        },
-                        new
-                        {
-                            ColorId = 3,
-                            ColorName = "مشکی"
-                        },
-                        new
-                        {
-                            ColorId = 4,
-                            ColorName = "بنفش"
-                        });
                 });
 
             modelBuilder.Entity("Al.Domain.Entities.Product.ProductCountry", b =>
@@ -232,28 +213,6 @@ namespace Al.Data.Migrations
                     b.HasKey("CountryId");
 
                     b.ToTable("Countries");
-
-                    b.HasData(
-                        new
-                        {
-                            CountryId = 1,
-                            CountryName = "Iran"
-                        },
-                        new
-                        {
-                            CountryId = 2,
-                            CountryName = "Israel"
-                        },
-                        new
-                        {
-                            CountryId = 3,
-                            CountryName = "China"
-                        },
-                        new
-                        {
-                            CountryId = 4,
-                            CountryName = "USA"
-                        });
                 });
 
             modelBuilder.Entity("Al.Domain.Entities.Product.ProductDiscount", b =>
@@ -305,18 +264,6 @@ namespace Al.Data.Migrations
                     b.HasKey("FactoryId");
 
                     b.ToTable("Factories");
-
-                    b.HasData(
-                        new
-                        {
-                            FactoryId = 1,
-                            FactoryName = "ChiTX"
-                        },
-                        new
-                        {
-                            FactoryId = 2,
-                            FactoryName = "SinaX"
-                        });
                 });
 
             modelBuilder.Entity("Al.Domain.Entities.Product.ProductGroup", b =>
@@ -356,24 +303,6 @@ namespace Al.Data.Migrations
                         {
                             GroupId = 3,
                             GroupName = "لوازم دسته دوم"
-                        },
-                        new
-                        {
-                            GroupId = 4,
-                            GroupName = "آره برقی",
-                            ParentId = 1
-                        },
-                        new
-                        {
-                            GroupId = 5,
-                            GroupName = "ماشین چمن زن",
-                            ParentId = 2
-                        },
-                        new
-                        {
-                            GroupId = 6,
-                            GroupName = "پمپ آب",
-                            ParentId = 3
                         });
                 });
 
@@ -414,38 +343,6 @@ namespace Al.Data.Migrations
                     b.HasKey("YearId");
 
                     b.ToTable("Years");
-
-                    b.HasData(
-                        new
-                        {
-                            YearId = 1,
-                            ProductionYear = 2019
-                        },
-                        new
-                        {
-                            YearId = 2,
-                            ProductionYear = 2020
-                        },
-                        new
-                        {
-                            YearId = 3,
-                            ProductionYear = 2021
-                        },
-                        new
-                        {
-                            YearId = 4,
-                            ProductionYear = 2022
-                        },
-                        new
-                        {
-                            YearId = 5,
-                            ProductionYear = 2023
-                        },
-                        new
-                        {
-                            YearId = 6,
-                            ProductionYear = 2024
-                        });
                 });
 
             modelBuilder.Entity("Al.Domain.Entities.User.ApplicationUser", b =>

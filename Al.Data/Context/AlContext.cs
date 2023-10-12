@@ -12,6 +12,11 @@ using Al.Domain.Entities.User;
 using Al.Domain.Entities.Product;
 using Al.Domain.Entities.Factors;
 using Al.Domain.Entities.Admin;
+using Al.Data.Configurations.Product.ProductGroup;
+using Al.Data.Configurations.Product.ProductCountry;
+using Al.Data.Configurations.Product.ProductYear;
+using Al.Data.Configurations.Product.ProductFactory;
+using Al.Data.Configurations.Product.ProductColor;
 
 namespace Al.Data.Context
 {
@@ -61,6 +66,13 @@ namespace Al.Data.Context
             .HasOne(p => p.Discount)
             .WithOne(p => p.Product)
             .OnDelete(DeleteBehavior.SetNull);
+
+            builder.ApplyConfiguration(new ProductGroupConfiguration());
+            builder.ApplyConfiguration(new ProductCountryConfiguration());
+            builder.ApplyConfiguration(new ProductYearConfiguration());
+            builder.ApplyConfiguration(new ProductFactoryConfiguration());
+            builder.ApplyConfiguration(new ProductColorConfiguration());
+
 
             base.OnModelCreating(builder);
         }

@@ -83,9 +83,19 @@ namespace Al.Core.Services.Home
 
             List<ProductDiscount> discounts = _discountRepository.GetGoldenDiscounts().ToList();
 
+            if(discounts == null)
+            {
+                return null;
+            }
+
             foreach (ProductDiscount discount in discounts)
             {
                 Domain.Entities.Product.Product product = _productRepository.GetProductByProductId((int)discount.ProductId);
+
+                if(product == null)
+                {
+                    continue;
+                }
 
                 result.Add(new ProductBoxViewModel {
                     ProductId = (int)discount.ProductId,
